@@ -14,7 +14,7 @@ public class Performance {
     @Pointcut("execution(* com.blogcode.user.UserService.*(..))")
     public void getUsers() {}
 
-    @Around("getBoards() || getUsers()")
+//    @Around("getBoards() || getUsers()")
     public Object calculatePerformanceTime(ProceedingJoinPoint proceedingJoinPoint) {
         Object result = null;
         try {

@@ -8,6 +8,7 @@ import com.blogcode.user.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@Rollback(value = false)
 class AopApplicationTest {
 
     @Autowired
@@ -47,7 +49,7 @@ class AopApplicationTest {
         for (int i = 0; i < 5; i++) {
             User user = users.get(i);
             user.setEmail("leejohy@naver.com");
-            userService.update(user);
+            userService.update2(user, user.getIdx());
         }
         List<History> histories = historyRepository.findAll();
         assertThat(histories.size()).isEqualTo(5);

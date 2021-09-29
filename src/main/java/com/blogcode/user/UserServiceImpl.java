@@ -20,4 +20,11 @@ public class UserServiceImpl implements UserService{
     public void update(User user) throws Exception {
         userRepository.save(user);
     }
+
+    @Override
+    public void update2(User user, Long id) throws Exception {
+        userRepository.save(user);
+    }
+
+
 }
